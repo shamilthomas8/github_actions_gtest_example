@@ -2,10 +2,15 @@
 #include <vector>
 #include <numeric>
 #include <regex>
+#include <gtest/gtest.h>
 
+using namespace testing;
 using namespace std;
 
-#include "StringCalculator.h"
+class StringCalculator {
+public:
+    int Add(const string &input);
+};
 
 class GetNegatives {
 private:

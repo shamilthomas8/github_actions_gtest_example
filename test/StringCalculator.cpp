@@ -60,3 +60,13 @@ int StringCalculator::Add(const string &input) {
 
 	return accumulate(numbers.begin(), numbers.end(), 0);
 }
+
+
+TEST(pass_a_single_value, returns_0_for_empty_string){
+	StringCalculator stringCalculator;
+    String input = "";
+    int output = 0;
+
+    int actualoutput = StringCalculator.add(input);
+}
+

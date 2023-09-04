@@ -66,12 +66,37 @@ int StringCalculator::Add(const string &input) {
 	return accumulate(numbers.begin(), numbers.end(), 0);
 }
 
+//----------------------------------------ADDED------------------------------------------------------//
 
 TEST(pass_a_single_value, returns_0_for_empty_string){
-	StringCalculator stringCalculator;
+    StringCalculator stringCalculator;
     string input = "";
     int output = 0;
 
     int actualoutput = stringCalculator.Add(input);
+    ASSERT_EQ(output, actualoutput);
 }
+
+class stringCalculatorAdd : public TestWithParam<tuple<string,int>>{
+	protected:
+		StringCalculator obj;
+};
+TEST_P(stringCalculatorAdd, Assert_Add_Operation){
+	const std::tuple <string, int>& parameter = GetParam();
+	string input = std::get<0> (parameter);
+	int expectedValue = std::get<1> (parameter);
+	int actualValue = obj.Add(input);
+	ASSERT_EQ(actualValue, expectedValue);
+
+}
+
+INSTANTIATE_TEST_SUITE_P(
+	StringCalculatorParameterTest,
+	stringCalculatorAdd,
+	Values(
+		std::make_tuple("",0),
+		std::make_tuple("1",1),
+		std::make_tuple("1,2",3)
+	)
+);
 

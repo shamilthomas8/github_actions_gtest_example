@@ -6,7 +6,7 @@ int divFun(int numerator,int denominator){
     return numerator/denominator;
 }
 
-class DivFunTestSuite:public testing::TestWithParam<std::tuple<int,int,int>>{
+class DivFunTestSuite:public testing::TestWithParam<std::tuple<int,int,int>>{    //numerator, denominator, expected output
   protected:
   DivFunTestSuite(){}
   ~DivFunTestSuite(){}
@@ -20,7 +20,7 @@ TEST_P(DivFunTestSuite,HandleValidInputs){
     ASSERT_EQ(actualValue,expectedValue);
 }
 INSTANTIATE_TEST_SUITE_P(
-    DivFunTestSuiteParameterExample,
+    DivFunTestSuiteParameterExample,                        //new name 
     DivFunTestSuite,
     ::testing::Values(
         std::make_tuple(10,5,2),

@@ -68,10 +68,11 @@ int StringCalculator::Add(const string &input) {
 
 
 TEST(pass_a_single_value, returns_0_for_empty_string){
-	StringCalculator stringCalculator;
+    StringCalculator stringCalculator;
     string input = "";
     int output = 0;
 
     int actualoutput = stringCalculator.Add(input);
+    ASSERT_EQ(output, actualoutput);
 }
 
